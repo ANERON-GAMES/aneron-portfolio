@@ -1,12 +1,16 @@
-body {
-    background-color: lightblue;
-    text-align: center;
-}
-
+/* Стили для заголовка */
 h1 {
-    color: darkblue;
+  color: #000000;
+  font-size: 24px;
 }
 
+/* Стили для текста */
 p {
-    color: darkgreen;
+  color: #333333;
+  font-size: 16px;
+}
+
+/* Стили для изображений */
+img {
+  max-width: 100%;
 }
