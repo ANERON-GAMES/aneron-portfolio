@@ -4,6 +4,24 @@
   <title>Portfolio title</title>
   <link rel="stylesheet" type="text/css" href="main.css">
   <script src="functional.js"></script>
+  <style>
+    /* Дополнительные стили для анимаций и изменения цвета */
+    .fade-in {
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .fade-out {
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .active {
+      color: #333;
+      background-color: #eee;
+      transition: background-color 0.3s ease-in-out;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -12,18 +30,18 @@
   
   <nav>
     <ul>
-      <li><a href="#about">About me</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contacts</a></li>
+      <li><a href="#about" onclick="toggleSection('about', this)">About me</a></li>
+      <li><a href="#projects" onclick="toggleSection('projects', this)">Projects</a></li>
+      <li><a href="#contact" onclick="toggleSection('contact', this)">Contacts</a></li>
     </ul>
   </nav>
   
-  <section id="about">
+  <section id="about" class="fade-in">
     <h2>About me</h2>
     <p>A little information about yourself and your skills.</p>
   </section>
   
-  <section id="projects">
+  <section id="projects" class="fade-out">
     <h2>Projects</h2>
     <ul>
       <li>
@@ -37,9 +55,31 @@
     </ul>
   </section>
   
-  <section id="contact">
+  <section id="contact" class="fade-out">
     <h2>Contacts</h2>
     <p>Contact details</p>
   </section>
+
+  <script>
+    function toggleSection(sectionId, link) {
+      var target = document.getElementById(sectionId);
+      var sections = document.querySelectorAll('section');
+
+      for (var i = 0; i < sections.length; i++) {
+        sections[i].classList.remove('fade-in');
+        sections[i].classList.add('fade-out');
+      }
+
+      target.classList.remove('fade-out');
+      target.classList.add('fade-in');
+
+      var activeLinks = document.querySelectorAll('nav ul li a.active');
+      for (var j = 0; j < activeLinks.length; j++) {
+        activeLinks[j].classList.remove('active');
+      }
+
+      link.classList.add('active');
+    }
+  </script>
 </body>
 </html>
